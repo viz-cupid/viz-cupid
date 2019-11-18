@@ -1,0 +1,14 @@
+
+Hope you enjoy your new logo, here are the people that
+made your beautiful logo happen :)
+font name: LibreBaskerville-Bold
+font link: https://fonts.google.com/specimen/Libre+Baskerville
+font author: Impallari Type
+font author site: https://twitter.com/pabloimpallari
+
+
+icon designer: Catherine Please
+icon designer link: /CatherinePlease
+        
+{"bg":"#FAEAF0","icon-gradient-0":"#C93A5F","icon-gradient-1":"#EFB0CA","font":"#32121B","slogan":"#46262f"}
+      
