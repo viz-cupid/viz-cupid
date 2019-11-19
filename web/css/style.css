@@ -1,0 +1,205 @@
+/*
+
+img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+*/
+
+img {
+  height: 130px;
+  width: 169px;
+}
+
+/****************/
+/*  LINE CHART: this styling of line path is take from previous homework.  */
+/****************/
+
+.line {
+  fill: none;
+  stroke: #ff9e78;
+  stroke-width: 1.5px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-size: 11px;
+}
+
+.tooltip-circle {
+  fill: #96ab96;
+}
+
+/*********************/
+/*  TOOLTIP OVERLAY: this styling of tooltip is taken from previous homework, which was taken from lab instructions.   */
+/*********************/
+
+.tooltip-title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+h1 {
+  color: black;
+  margin-top: 20px;
+  font-weight: 200;
+}
+
+h2 {
+  color: white;
+  margin-top: 20px;
+  font-weight: 200;
+}
+
+h3 {
+  color: white;
+  margin-top: 20px;
+  font-weight: 150;
+}
+
+h4 {
+  margin-top: 50px;
+  color: white;
+  margin-top: 20px;
+  font-weight: 100;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #ff99b4;
+  margin-top: 20px;
+  font-weight: 200;
+}
+
+img {
+  height: 400px;
+  width: 500px;
+}
+
+body {
+  background: #ff99b4;
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: #ff8aa3;
+  color: white;
+  font-size: 50px;
+  font-family: "Helvetica Neue";
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.container {
+  margin-bottom: 100px;
+}
+
+.caption {
+  color: #ea99b4;
+  margin-top: 50px;
+}
+
+.subtitle {
+  margin-top: 50px;
+}
+
+.text {
+  margin-top: 130px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.label {
+  color: #ea99b4;
+  margin-bottom: 23px;
+}
+
+.funding {
+  margin-bottom: 100px;
+}
+
+.middle-space {
+  padding: 50px;
+}
+
+.storytelling {
+  font-family: "Bradley Hand";
+  font-weight: 80;
+}
+
+div img {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  height: 400px;
+  width: 500px;
+}
+
+#attribute-title {
+  margin-top: 60px;
+  margin-bottom: 20px;
+  /** text-align: center; **/
+}
+
+#selected {
+  margin-top: 130px;
+  text-align: center;
+}
+
+#progress {
+  margin-top: 30px;
+}
+
+#malaria-parasites {
+  margin-bottom: 100px;
+}
+
+#key-facts {
+  margin-bottom: 40px;
+}
+
+#quotes {
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-family: cursive;
+}

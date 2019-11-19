@@ -1,0 +1,22 @@
+[
+  {
+    "frequency": "Once a month or less",
+    "ratings": [482, 359, 95, 19, 13]
+  },
+  {
+    "frequency": "2 to 3 times a month",
+    "ratings": [324, 156, 28, 6, 5]
+  },
+  {
+    "frequency": "3 to 6 times a week",
+    "ratings": [256, 90, 21, 1, 0]
+  },
+  {
+    "frequency": "Once or twice a week",
+    "ratings": [495, 206, 36, 4, 1]
+  },
+  {
+    "frequency": "Once a day or more",
+    "ratings": [53, 22, 9, 1, 1]
+  }
+]
