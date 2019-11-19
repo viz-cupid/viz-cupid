@@ -92,7 +92,7 @@ MatrixVis.prototype.initVis = function() {
     .attr("fill", d => d3.interpolateBlues(d / 600));
 
   // (Filter, aggregate, modify data)
-  vis.wrangleData();
+  // vis.wrangleData();
 };
 
 /*

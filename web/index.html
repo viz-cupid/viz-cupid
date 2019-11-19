@@ -1,10 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Viz Cupid</title>
-  </head>
-  <body>
-    Initial commit
-  </body>
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CS171 - Midterm Project</title>
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<h1 class="header">
+			Tracing Dating, Marriage, and Everything In-Between</h1>
+
+		<div id="quotes">
+			<h2>“Love in its essence is spiritual fire.” — Seneca</h2>
+			<p></p>
+			<h2>“You know it's love when all you want is that person to be happy, even if you're not part of their happiness.” — Julia Roberts</h2>
+			<p></p>
+			<h2>“'Tis better to have loved and lost than never to have loved at all.” — Alfred Lord Tennyson</h2>
+		</div>
+
+		<hr>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<h1>Love touches all of us, yet there is so much uncertainty surrounding it.
+						We often wonder: where will we meet our soulmate? How long do people date for before they get married?
+						Does our sexual life affect the quality of our relationships?
+					</h1>
+				</div>
+				<div class="col-md-6">
+					<img src="img/titanic.jpg" class="center responsive .img-fluid" id="titanic-img">
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<h1>Thankfully, researchers at Stanford University were also curious about these questions,
+			and they conducted a major study across the U.S., and published the survey responses
+			in a dataset called "How Couples Meet and Stay Together." <br>
+			To explore these recent trends in couples across America, read on! </h1>
+
+		<hr>
+
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6" id="matrix-vis">
+<!--					<img src="img/quality_relationship_sex.png" class="center responsive .img-fluid" id="quality-relationship-img">-->
+
+				</div>
+				<div class="col-md-6">
+					<h1>How does frequency of sex influence quality of relationship?</h1>
+					<h2>Here, we see that frequency of sex has a [insert conclusion] effect
+						on quality of relationship.
+					<h2>
+
+				</div>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 middle-space">
+					<h1>Could age differences within couples have an effect on marital status?</h1>
+					<p></p>
+
+					<h3>Here, we see that there is indeed a significant difference between
+					couples who are many years apart in age and those that are closer in age
+					in terms of marital status. Those with similar ages lie on the y=x dotted line.</h3>
+
+
+
+				</div>
+				<div class="col-md-6">
+					<h2 id="attribute-title">The Effect of Age Differences on Marital Status</h2>
+
+					<img src="img/age_difference_marriage.png" class="center responsive .img-fluid" id="age-difference-img">
+
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 middle-space">
+					<h1 id="progress">How long do people date before they get married? <br></h1>
+
+					<h3>On the right, each line segment represents the duration that a couple
+					dated before getting married, plotted by age. To view the visualization in
+					more detail, use the brushing component on the area chart below it.</h3>
+
+					<p></p>
+					<h2>Are there differences between heterosexual and same-sex marriages?</h2>
+					<h3>We see that there are indeed differences between heterosexual and
+					same-sex marriages, as we see [insert trends after analyzing visualization].</h3>
+					<p></p>
+
+				</div>
+				<div class="col-md-6">
+					<h4 id="selected"></h4>
+
+					<h2>Time Spent Dating Before Marriage</h2>
+
+					<img src="img/dating_time_before_marriage.png" class="center responsive .img-fluid" id="dating-time-img">
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Load JS libraries -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/queue.min.js"></script>
+	<script src="js/d3.min.js"></script>
+		<script src="https://d3js.org/d3-color.v1.min.js"></script>
+		<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+		<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+
+		<!-- Visualization objects -->
+		<script src="js/matrixvis.js"></script>
+
+		<!-- Load data, create visualizations -->
+		<script src="js/main.js"></script>
+
+</body>
 </html>
