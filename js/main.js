@@ -24,4 +24,8 @@ function createVis(error, matrixData) {
 
   // (4) Create visualization instances
   var matrixVis = new MatrixVis("matrix-vis", matrixData);
+
+  // TODO: timeline and time area visualizations
+  // var timelineVis = new MatrixVix("timeline-vis", ...)
+  // var timeAreaVis = new TimeAreaVis("time-area-vis", ...)
 }
