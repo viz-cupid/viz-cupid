@@ -80,10 +80,28 @@
 
 
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" id="age-vis">
 					<h2 id="attribute-title">The Effect of Age Differences on Marital Status</h2>
+					<!-- Select box to choose the ranking type -->
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="ranking-type">Filter by Marital Status</label>
+							<select class="form-control" id="ranking-type">
+								<option value="all_attributes">All attributes</option>
+								<option value="Living with partner">Living with partner</option>
+								<option value="Married">Married</option>
+								<option value="Never married">Never married</option>
+								<option value="Separated">Separated</option>
+								<option value="Widowed">Widowed</option>
+								<option value="Divorced">Divorced</option>
+							</select>
 
-					<img src="img/age_difference_marriage.png" class="center responsive .img-fluid" id="age-difference-img">
+							<!-- Activity IV -->
+							<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
+						</div>
+					</form>
+
+<!--					<img src="img/age_difference_marriage.png" class="center responsive .img-fluid" id="age-difference-img"> -->
 
 			</div>
 		</div>
@@ -135,9 +153,11 @@
 
 		<!-- Visualization objects -->
 		<script src="js/matrixvis.js"></script>
+
+		<script src="js/age_difference.js"></script>
+
 		<script src="js/timelinevis.js"></script>
 		<script src="js/timeareavis.js"></script>
-
 
 		<!-- Load data, create visualizations -->
 		<script src="js/main.js"></script>
