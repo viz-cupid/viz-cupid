@@ -25,11 +25,13 @@ img {
 .axis path,
 .axis line {
   fill: none;
-  stroke: #000;
+  stroke: white;
   shape-rendering: crispEdges;
 }
 .axis text {
-  font-size: 11px;
+  font-size: 13px;
+  fill: white;
+  font-weight: 100px;
 }
 
 .tooltip-circle {
@@ -141,6 +143,7 @@ body {
 
 .text {
   margin-top: 130px;
+  fill: white;
 }
 
 .center {
@@ -202,4 +205,21 @@ div img {
   color: white;
   font-style: italic;
   font-family: cursive;
+}
+
+.legendText {
+  fill: white;
+  font-weight: 200;
+}
+
+.axisTitle {
+  fill: white;
+  font-weight: 200;
+}
+
+label {
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  font-weight: 200;
 }
