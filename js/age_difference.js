@@ -34,6 +34,15 @@ AgeVis.prototype.initVis = function() {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // Setup the tool tip. This tooltip code is taken from previous homework.
+    var tool_tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-8, 0])
+        .html(function(d) {
+            return "Respondent's age: " + d.participant_age + "<br>" + "Partner's age: " + d.partner_age + "<br>" + d.marital_status;
+        });
+    vis.svg.call(tool_tip);
+
 
     vis.x = d3.scaleLinear()
         .domain([0,
@@ -50,15 +59,16 @@ AgeVis.prototype.initVis = function() {
 
     // For fill color of circles
     vis.marital_status = [
-        'Living with partner',
         'Married',
+        'Living with partner',
         'Never married',
         'Separated',
         'Widowed',
         'Divorced'
     ];
 
-    colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"];
+    //colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"];
+    var colors = ['#980043', '#dd1c77', '#df65b0', '#c994c7', '#d4b9da', '#f1eef6'];
 
     var legendkey = [];
     for (var i = 0; i < colors.length; i++) {
@@ -67,28 +77,24 @@ AgeVis.prototype.initVis = function() {
         legendkey.push(object);
     }
 
-    var colorPalette = d3.scaleOrdinal(d3.schemeCategory10);
+    var colorPalette = d3.scaleOrdinal()
+        .domain(vis.marital_status)
+        .range(colors);
 
-    colorPalette.domain(['Living with partner', 'Married', 'Never married', "Separated",
-        "Widowed", "Divorced"]);
+    //var colorPalette = d3.scaleOrdinal(d3.schemeCategory10);
+
+    //colorPalette.domain(['Living with partner', 'Married', 'Never married', "Separated", "Widowed", "Divorced"]);
 
     // create an array of objects with key = marital status, value = color
     var legendkey = [];
     vis.marital_status.forEach(function(d) {
         var object = {};
         object[d] = colorPalette(d);
-        console.log(object[d]);
-        console.log(object);
         legendkey.push(object);
     });
 
-    console.log(legendkey);
-
     vis.xAxis = d3.axisBottom()
         .scale(vis.x);
-        //.ticks(7)
-        //.tickFormat(d3.format("d"))
-        //.tickValues([1000, 2000, 4000, 8000, 16000, 32000, 100000]);
 
     vis.yAxis = d3.axisLeft()
         .scale(vis.y);
@@ -108,14 +114,24 @@ AgeVis.prototype.initVis = function() {
         .data(vis.data)
 
     circle.enter().append("circle")
+        .on("mouseover", tool_tip.show)
+        .on("mouseout", tool_tip.hide)
 
         .merge(circle)
         .transition()
         .duration(1000)
         .attr("cx", function(d) {
+            if (d.participant_age < 15) {
+                console.log(d.participant_age);
+                console.log(d.partner_age);
+            }
             return vis.x(d.participant_age);
         })
         .attr("cy", function(d) {
+            if (d.partner_age < 15) {
+                console.log(d.partner_age);
+                console.log(d.participant_age);
+            }
             return vis.y(d.partner_age);
         })
         .attr("r", 5)
@@ -141,15 +157,13 @@ AgeVis.prototype.initVis = function() {
             vis.displayData = vis.data;
         }
 
-
-        console.log(vis.displayData.length);
-
         // Enter and Update (set the dynamic properties of the elements)
         var circle = vis.svg.selectAll("circle")
             .data(vis.displayData)
 
         circle.enter().append("circle")
-
+            .on("mouseover", tool_tip.show)
+            .on("mouseout", tool_tip.hide)
             .merge(circle)
             .transition()
             .duration(1000)
@@ -173,11 +187,10 @@ AgeVis.prototype.initVis = function() {
         // Exit
         circle.exit().remove();
     });
-    console.log(vis.attribute);
 
     // axes labels
     vis.svg.append("text")
-        .text("Participant's Age")
+        .text("Respondent's Age")
         .attr("class", "axisTitle")
         .attr("x", vis.width / 2 - 40)
         .attr("y", vis.height + 40);
@@ -189,28 +202,6 @@ AgeVis.prototype.initVis = function() {
         .attr("y", vis.height / 2 - 15)
         .attr("transform", "rotate(-90, -20, " + (vis.height / 2)  + ")");
 
-
-/*
-    // Store colorPalette colors in set
-    var colorSet = new Set();
-
-    vis.data.forEach(function(d) {
-        colorSet.add(colorPalette(d.marital_status));
-    });
-
-    console.log(colorSet);
-
-     var colorArray = [];
-
-     colorSet.forEach(function(d) {
-         colorArray.push(d);
-     });
-
-     console.log(colorArray);
-*/
-
-
-    // Legend
     // Data-join (rect now contains the update selection)
     var rect = vis.svg.selectAll("rect")
         .data(colors);
@@ -239,13 +230,6 @@ AgeVis.prototype.initVis = function() {
     // Exit
     rect.exit().remove();
 
-
-    // axes labels
-    vis.svg.append("text")
-        .text("Participant's Age")
-        .attr("class", "axisTitle")
-        .attr("x", vis.width / 2 - 40)
-        .attr("y", vis.height + 40);
 
     var legendText = vis.svg.selectAll(".legendText")
         .data(legendkey)
