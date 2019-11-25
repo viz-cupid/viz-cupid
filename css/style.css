@@ -12,6 +12,10 @@ img {
   width: 169px;
 }
 
+.matrix-x-axis-label {
+  text-anchor: end;
+}
+
 /****************/
 /*  LINE CHART: this styling of line path is take from previous homework.  */
 /****************/
