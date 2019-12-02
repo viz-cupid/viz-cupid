@@ -56,21 +56,6 @@ TimelineVis.prototype.initVis = function() {
         .domain(["marry", "movein", "dating", "met"])
         .range(['#980043', '#dd1c77', '#df65b0', '#c994c7', '#d4b9da', '#f1eef6']);
 
-    // Add zoom component
-    vis.xOrig = vis.x.copy();
-    vis.yOrig = vis.y.copy();
-
-    // function that is being called when user zooms
-    vis.zoomFunction = function() {
-        vis.y = d3.event.transform.rescaleY(vis.yOrig);
-        vis.x = d3.event.transform.rescaleX(vis.xOrig);
-        vis.updateVis();
-    };
-
-    vis.zoom = d3.zoom()
-        .on("zoom", vis.zoomFunction)
-        .scaleExtent([1, 20]);
-
     // (Filter, aggregate, modify data)
     vis.wrangleData();
 };
@@ -82,7 +67,9 @@ TimelineVis.prototype.initVis = function() {
 
 TimelineVis.prototype.wrangleData = function() {
     var vis = this;
-
+    vis.data = vis.data.sort((a, b) => relationshipLength(b) - relationshipLength(a));
+    vis.data = vis.data.filter((_, i) => i < 100);
+    console.log(vis.data);
     // (Update visualization)
     vis.updateVis();
 };
@@ -94,8 +81,12 @@ TimelineVis.prototype.wrangleData = function() {
 
 TimelineVis.prototype.updateVis = function() {
     var vis = this;
+    vis.y.domain([0, vis.data.length-1]);
+    console.log(vis.y.range());
+    vis.x.domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)]);
 
     vis.xAxis = d3.axisBottom()
+        .ticks(5)
         .scale(vis.x);
 
     vis.svg.append("g")
@@ -106,7 +97,6 @@ TimelineVis.prototype.updateVis = function() {
 
     var timeline = vis.svg.append("g")
         .attr("clip-path", "url(#clip")
-        .call(vis.zoom)
         .selectAll(".timeline")
         .data(vis.data);
 
@@ -116,7 +106,7 @@ TimelineVis.prototype.updateVis = function() {
     timelineGroup
       .merge(timeline)
       .transition()
-      .attr("transform", (_, i) => `translate(0, ${vis.y(i)})`);
+      .attr("transform", (d, i) => `translate(0, ${vis.y(i)})`);
 
 
 
@@ -143,3 +133,9 @@ TimelineVis.prototype.updateVis = function() {
     date.exit().remove();
 
 };
+
+
+function relationshipLength(d) {
+    return (d.dates[d.dates.length-1].date - d.dates[0].date) / d.age;
+}
+
