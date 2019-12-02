@@ -22,7 +22,7 @@ MatrixVis.prototype.initVis = function() {
 
   (vis.width =
     $("#" + vis.parentElement).width() - vis.margin.left - vis.margin.right),
-    (vis.height = 400 - vis.margin.top - vis.margin.bottom);
+    (vis.height = 600 - vis.margin.top - vis.margin.bottom);
 
   // SVG drawing area
   vis.svg = d3
@@ -36,6 +36,9 @@ MatrixVis.prototype.initVis = function() {
       "translate(" + vis.margin.left + "," + vis.margin.top + ")"
     );
 
+  const box_offset = 60;
+  const box_size = 60;
+
   // Setup the tool tip. This tooltip code is taken from previous homework.
   var tool_tip = d3
     .tip()
@@ -48,14 +51,14 @@ MatrixVis.prototype.initVis = function() {
 
   vis.scale = d3.scaleSequential(d3.interpolateGreys);
 
-  vis.x_domain = [
+  vis.freq_domain = [
     "Once a month or less",
     "2 to 3 times a month",
     "Once or twice a week",
     "3 to 6 times a week",
     "Once a day or more"
   ];
-  vis.y_domain = ["very poor", "poor", "fair", "good", "excellent"];
+  vis.quality_domain = ["very poor", "poor", "fair", "good", "excellent"];
 
   // var legend = vis.svg.append("g").data([0, 50, 100, 200, 300, 400]);
   // legend
@@ -68,7 +71,7 @@ MatrixVis.prototype.initVis = function() {
   //   .attr("height", 20)
   //   .attr("fill", "green");
 
-  var y = (d, i) => i * 32 + 15;
+  var y = (d, i) => i * box_offset + 15;
 
   // // select all the rows
   // var rootSelection = vis.svg
@@ -95,7 +98,7 @@ MatrixVis.prototype.initVis = function() {
   //   .attr("y", 10)
   //   .attr("x", -10)
   //   .style("text-anchor", "end")
-  //   .text((d, i) => vis.y_domain[i]);
+  //   .text((d, i) => vis.quality_domain[i]);
   //
   // rootSelection
   //   .transition()
@@ -116,63 +119,79 @@ MatrixVis.prototype.initVis = function() {
   // select all the columns
   var rootSelection = vis.svg
     .selectAll(".matrix-column")
+    // .data(vis.data, (d, i) => vis.freq_domain[i]);
     .data(vis.data, d => d.frequency);
 
-  // make column labels
-  rootSelection
-    .enter()
-    .append("text")
-    .attr("x", (d, i) => -105 + 23 * i)
-    .attr("y", (d, i) => i * 23 + 115)
-    .text(d => d.frequency)
-    .attr("class", "matrix-x-axis-label")
-    .attr("transform", `rotate(${270 + 45})`);
+  // make column labels (rotation makes this difficult)
+  // rootSelection
+  //   .enter()
+  //   .append("text")
+  //   .attr("x", (d, i) => -105 + 23 * i)
+  //   .attr("y", (d, i) => i * 23 + 132)
+  //   .text((d, i) => vis.quality_domain[i])
+  //   // .text((d, i) => d.frequency)
+  //   .attr("class", "matrix-x-axis-label")
+  //   .attr("transform", `rotate(${270 + 45})`);
 
   // make group for columns
   var columns = rootSelection
     .enter()
     .append("g")
     .attr("class", "matrix-column")
-    .attr("transform", (d, i) => `translate(${32 * i}, 0)`);
-  // .attr("transform", (d, i) => `translate(0, ${32 * i})`);
+    .attr(
+      "transform",
+      (d, i) => `translate(${box_offset * i + 16}, ${box_size * 5.6})`
+    );
+  // .attr("transform", (d, i) => `translate(0, ${box_offset * i})`);
+
+  // label columns
+  columns
+    .append("text")
+    .attr("y", 0)
+    .attr("x", box_size / 2 + 2)
+    .style("text-anchor", "end")
+    .attr("transform", `rotate(${270 + 45})`)
+    .text((d, i) => vis.quality_domain[i]);
 
   // rows group
   var rows = rootSelection
     .enter()
     .append("g")
     .attr("class", "matrix-column")
-    .attr("transform", (d, i) => `translate(0, ${32 * i})`);
+    .attr("transform", (d, i) => `translate(0, ${box_offset * (4 - i)})`);
 
   // label the rows tbh
   rows
     .append("text")
-    .attr("y", 10)
+    .attr("y", box_size / 2 + 2)
     .attr("x", -10)
     .style("text-anchor", "end")
-    .text((d, i) => vis.y_domain[4 - i]);
+    .text((d, i) => vis.freq_domain[i]);
 
   rootSelection
     .transition()
     .duration(200)
-    // .attr("transform", (d, i) => `translate(0, ${32 * i})`);
-    // .attr("transform", (d, i) => `translate(0, ${32 * 5 - 32 * i})`);
-    .attr("transform", (d, i) => `translate(${32 * i}, 0)`);
+    // .attr("transform", (d, i) => `translate(0, ${box_offset * i})`);
+    // .attr("transform", (d, i) => `translate(0, ${box_offset * 5 - box_offset * i})`);
+    .attr("transform", (d, i) => `translate(${box_offset * i}, 0)`);
 
-  var squares = columns.selectAll(".matrix-square").data(d => d.ratings);
+  var squares = rows.selectAll(".matrix-square").data(d => d.ratings);
   squares
     .enter()
     // .append("text")
     .append("rect")
     .on("mouseover", tool_tip.show)
     .on("mouseout", tool_tip.hide)
-    .attr("y", (d, i) => (4 - i) * 32)
-    // .attr("x", (d, i) => i * 32)
-    .attr("x", 0)
+    // .attr("y", (d, i) => (4 - i) * box_offset)
+    .attr("x", (d, i) => i * box_offset)
+    .attr("y", 0)
+    // .attr("x", 0)
     // .text((d, i) => d);
-    .attr("height", 10)
-    .attr("width", 10)
+    .attr("height", box_size)
+    .attr("width", box_size)
     .attr("class", "matrix-square")
-    .attr("fill", d => d3.interpolateBlues(d / 300));
+    .attr("fill", d => d3.interpolateHcl("#ffffff", "#980043")(d / 330));
+  // .attr("fill", d => d3.interpolateReds(d / 300));
 
   // (Filter, aggregate, modify data)
   // vis.wrangleData();
