@@ -69,9 +69,10 @@ TimelineVis.prototype.initVis = function() {
 
 TimelineVis.prototype.wrangleData = function() {
     var vis = this;
+
     vis.data = vis.data.sort((a, b) => a.dates[0].date - b.dates[0].date);
+    // Until zoom/scroll implemented, only take the first 100 to avoid clutter
     vis.data = vis.data.filter((_, i) => i < 100);
-    console.log(vis.data);
     // (Update visualization)
     vis.updateVis();
 };
@@ -84,8 +85,7 @@ TimelineVis.prototype.wrangleData = function() {
 TimelineVis.prototype.updateVis = function() {
     var vis = this;
     vis.y.domain([0, vis.data.length-1]);
-    console.log(vis.y.range());
-    vis.x.domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)]);
+    vis.x.domain([minDate(vis.data), maxDate(vis.data)]);
 
     vis.xAxis = d3.axisBottom()
         .ticks(5)
@@ -124,13 +124,14 @@ TimelineVis.prototype.updateVis = function() {
 
     date.enter().append("circle")
         .attr("class", "date")
-        .attr("r", 4)
+        .attr("r", vis.r)
         .attr("stroke", "black")
         .on("mouseover", function() {
             d3.selectAll("path")
                 .attr("opacity", 0.1);
             d3.selectAll(".date")
                 .attr("opacity", 0.3);
+            d3.select(this).raise();
             d3.select(this.parentNode)
                 .raise()
                 .selectAll("path")
@@ -140,7 +141,7 @@ TimelineVis.prototype.updateVis = function() {
                 .attr("opacity", 1)
                 // .transition()
                 // .duration(750)
-                .attr("r", 7);
+                .attr("r", vis.r * 1.5);
         })
         .on("mouseout", function() {
             d3.selectAll("path")
@@ -152,7 +153,7 @@ TimelineVis.prototype.updateVis = function() {
             d3.select(this.parentNode)
                 .selectAll(".date")
                 // .transition()
-                .attr("r", 4);
+                .attr("r", vis.r);
         })
         .merge(date)
         .transition()
@@ -165,6 +166,14 @@ TimelineVis.prototype.updateVis = function() {
 
 function relationshipLength(d) {
     return (d.dates[d.dates.length-1].date - d.dates[0].date);
+}
+
+function minDate(data) {
+    return d3.min(data, d => d.dates[0].date)
+}
+
+function maxDate(data) {
+    return d3.max(data, d => d.dates[d.dates.length-1].date)
 }
 
 
