@@ -18,6 +18,7 @@ TimelineVis = function(_parentElement, _data) {
 
 TimelineVis.prototype.initVis = function() {
     var vis = this;
+    vis.r = 4;
 
     vis.margin = { top: 30, right: 40, bottom: 120, left: 40 };
 
@@ -35,15 +36,16 @@ TimelineVis.prototype.initVis = function() {
         .attr(
             "transform",
             "translate(" + vis.margin.left + "," + vis.margin.top + ")"
-        );
+        )
+        .attr("overflow", "auto");
 
     // SVG clipping path
-    vis.svg.append("defs")
-        .append("clipPath")
-        .attr("id", "clip")
-        .append("rect")
-        .attr("width", vis.width + 4)
-        .attr("height", vis.height + 4);
+    // vis.svg.append("defs")
+    //     .append("clipPath")
+    //     .attr("id", "clip")
+    //     .append("rect")
+    //     .attr("width", vis.width + 4)
+    //     .attr("height", vis.height + 4);
 
     vis.x = d3.scaleTime()
         .domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)])
@@ -67,7 +69,7 @@ TimelineVis.prototype.initVis = function() {
 
 TimelineVis.prototype.wrangleData = function() {
     var vis = this;
-    vis.data = vis.data.sort((a, b) => relationshipLength(b) - relationshipLength(a));
+    vis.data = vis.data.sort((a, b) => a.dates[0].date - b.dates[0].date);
     vis.data = vis.data.filter((_, i) => i < 100);
     console.log(vis.data);
     // (Update visualization)
@@ -96,7 +98,7 @@ TimelineVis.prototype.updateVis = function() {
         .call(vis.xAxis);
 
     var timeline = vis.svg.append("g")
-        .attr("clip-path", "url(#clip")
+        // .attr("clip-path", "url(#clip)")
         .selectAll(".timeline")
         .data(vis.data);
 
@@ -111,10 +113,10 @@ TimelineVis.prototype.updateVis = function() {
 
 
     timelineGroup.append("path")
-        .attr("stroke", "lightgrey")
-        .attr("stroke-width", 1)
+        .attr("stroke", "black")
+        .attr("stroke-width", 1.5)
         .merge(timeline)
-        .attr("d", d => `M${vis.x(d.dates[0].date)} 0 L${vis.x(d.dates[d.dates.length-1].date)} 0 Z`);
+        .attr("d", d => `M${vis.x(d.dates[0].date)+4} 0 L${vis.x(d.dates[d.dates.length-1].date)-4} 0 Z`);
 
 
     var date = timelineGroup.merge(timeline).selectAll(".date")
@@ -123,10 +125,36 @@ TimelineVis.prototype.updateVis = function() {
     date.enter().append("circle")
         .attr("class", "date")
         .attr("r", 4)
-        .style("opacity", 0.7)
         .attr("stroke", "black")
+        .on("mouseover", function() {
+            d3.selectAll("path")
+                .attr("opacity", 0.1);
+            d3.selectAll(".date")
+                .attr("opacity", 0.3);
+            d3.select(this.parentNode)
+                .raise()
+                .selectAll("path")
+                .attr("opacity", 1);
+            d3.select(this.parentNode)
+                .selectAll(".date")
+                .attr("opacity", 1)
+                // .transition()
+                // .duration(750)
+                .attr("r", 7);
+        })
+        .on("mouseout", function() {
+            d3.selectAll("path")
+                // .transition()
+                .attr("opacity", 1);
+            d3.selectAll(".date")
+                // .transition()
+                .attr("opacity", 1);
+            d3.select(this.parentNode)
+                .selectAll(".date")
+                // .transition()
+                .attr("r", 4);
+        })
         .merge(date)
-        .raise()
         .transition()
         .attr("fill", d => vis.color(d.milestone))
         .attr("cx", d => vis.x(d.date));
@@ -136,6 +164,7 @@ TimelineVis.prototype.updateVis = function() {
 
 
 function relationshipLength(d) {
-    return (d.dates[d.dates.length-1].date - d.dates[0].date) / d.age;
+    return (d.dates[d.dates.length-1].date - d.dates[0].date);
 }
+
 
