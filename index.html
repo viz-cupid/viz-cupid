@@ -51,6 +51,22 @@
 
 		<div class="container-fluid">
 			<div class="row">
+				<!-- Select box to choose the ranking type -->
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="ranking-type">Scale against </label>
+						<select class="form-control" id="matrix-ranking-type">
+							<option value="across_all_freqs">both frequency and quality &nbsp;</option>
+							<option value="across_this_freq">frequency only</option>
+							<option value="across_qualities">quality only</option>
+						</select>
+
+						<!-- Activity IV -->
+						<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
+					</div>
+				</form>
+			</div>
+			<div class="row">
 				<div class="col-md-6" id="matrix-vis">
 <!--					<img src="img/quality_relationship_sex.png" class="center responsive .img-fluid" id="quality-relationship-img">-->
 
