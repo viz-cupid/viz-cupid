@@ -30,11 +30,14 @@ function createVis(error, matrixData, ageData, timeData) {
   // clean up time data
   timeData.forEach(d => {
     d.same_sex = +d.same_sex === -1 ? null : +d.same_sex === 1;
+    d.age = +d.age;
     var milestones = ["met", "dating", "movein", "marry"];
-    d.dates = milestones.map(ms => {
-      d[ms] = d[ms] === "null" ? null : new Date(d[ms]);
-      return { "milestone": ms, "date": d[ms], "same_sex": d.same_sex };
-    }).filter(dt => dt.date !== null);
+    d.dates = milestones
+      .map(ms => {
+        d[ms] = d[ms] === "null" ? null : new Date(d[ms]);
+        return { milestone: ms, date: d[ms], same_sex: d.same_sex };
+      })
+      .filter(dt => dt.date !== null);
   });
   var newTimeData = timeData.filter(d => d.dates.length > 0);
   console.log(newTimeData);

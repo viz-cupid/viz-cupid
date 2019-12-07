@@ -1,0 +1,39 @@
+# create the fresh export_data
+
+f = frequency_counts
+export_data = []
+for freq in f:
+    if freq == '' or freq == 'Refused':
+        continue
+    if 'very poor' not in f[freq]:
+        f[freq]['very poor'] = 0
+
+    responses_by_freq = frequency_counts_simple[freq]
+
+    export_data.append({
+        "frequency": freq,
+        "total_respondents": responses_by_freq,
+        "respondents_per_category": [
+                f[freq]['very poor'],
+                f[freq]['poor'],
+                f[freq]['fair'],
+                f[freq]['good'],
+                f[freq]['excellent']
+            ],
+        "ratios_per_quality": {
+            "num_respondents": [
+                f[freq]['very poor'],
+                f[freq]['poor'],
+                f[freq]['fair'],
+                f[freq]['good'],
+                f[freq]['excellent']
+            ],
+            "by_ratio": [
+                f[freq]['very poor'] / responses_by_freq,
+                f[freq]['poor'] / responses_by_freq,
+                f[freq]['fair'] / responses_by_freq,
+                f[freq]['good'] / responses_by_freq,
+                f[freq]['excellent'] / responses_by_freq
+            ]
+        }
+    })

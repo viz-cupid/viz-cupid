@@ -34,55 +34,50 @@
 					</h1>
 				</div>
 				<div class="col-md-6">
-					<img src="img/titanic.jpg" class="center responsive .img-fluid" id="titanic-img">
+					<img src="img/heart-bokeh.jpeg" class="center responsive .img-fluid" id="titanic-img">
 				</div>
 			</div>
 		</div>
 
 		<hr>
 
-		<h1>Thankfully, researchers at Stanford University were also curious about these questions,
+		<h1>In 2017, researchers at Stanford University were also curious about these questions,
 			and they conducted a major study across the U.S., and published the survey responses
 			in a dataset called "How Couples Meet and Stay Together." <br>
-			To explore these recent trends in couples across America, read on! </h1>
+			To explore these recent trends in couples across America, read on!
+		</h1>
 
 		<hr>
-
 
 		<div class="container-fluid">
-			<div class="row">
-				<!-- Select box to choose the ranking type -->
-				<form class="form-inline">
-					<div class="form-group">
-						<label for="ranking-type">Scale against </label>
-						<select class="form-control" id="matrix-ranking-type">
-							<option value="across_all_freqs">both frequency and quality &nbsp;</option>
-							<option value="across_this_freq">frequency only</option>
-							<option value="across_qualities">quality only</option>
-						</select>
-
-						<!-- Activity IV -->
-						<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
-					</div>
-				</form>
-			</div>
-			<div class="row">
-				<div class="col-md-6" id="matrix-vis">
-<!--					<img src="img/quality_relationship_sex.png" class="center responsive .img-fluid" id="quality-relationship-img">-->
-
+			<h1>Divorced Couples More Likely than Married Couples to Have Larger Age Differences</h1>
+			<p></p>
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="ranking-type">Filter by Marital Status</label>
+					<select class="form-control" id="ranking-type">
+						<option value="all_attributes">All attributes</option>
+						<option value="Living with partner">Living with partner</option>
+						<option value="Married">Married</option>
+						<option value="Never married">Never married</option>
+						<option value="Separated">Separated</option>
+						<option value="Widowed">Widowed</option>
+						<option value="Divorced">Divorced</option>
+					</select>
 				</div>
-				<div class="col-md-6">
-					<h1>How does frequency of sex influence quality of relationship?</h1>
-					<h3>We see that the respondents tended to rate their relationships excellent regardless
-						of sex frequency, and there is not a clear trend. The data also suggest that very few couples
-						will have a frequency of more than twice a week.</h3>
+			</form>
 
-				</div>
-			</div>
+			<div id="age-vis"></div>
+
+			<h3>Here, we see that there is indeed a significant difference between
+			couples who are many years apart in age and those that are closer in age
+			in terms of marital status. Couples with similar ages lie more closely along the diagonal.
+			<br><br> To view detailed information, about the age and marital status of each respondent
+			and the partner, hover over the circles on the visualization.</h3>
+
 		</div>
 
-		<hr>
-
+<!--
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 middle-space">
@@ -90,17 +85,14 @@
 					<p></p>
 
 					<h3>Here, we see that there is indeed a significant difference between
-					couples who are many years apart in age and those that are closer in age
-					in terms of marital status. Those with similar ages lie on the y=x dotted line.
-					<br><br> To view detailed information, about the age and marital status of each respondent
-					and the partner, hover over the circles on the visualization.</h3>
-
-
+						couples who are many years apart in age and those that are closer in age
+						in terms of marital status. Those with similar ages lie on the y=x dotted line.
+						<br><br> To view detailed information, about the age and marital status of each respondent
+						and the partner, hover over the circles on the visualization.</h3>
 
 				</div>
 				<div class="col-md-6" id="age-vis">
-					<h2 id="attribute-title">The Effect of Age Differences on Marital Status</h2>
-					<!-- Select box to choose the ranking type -->
+					<h2>The Effect of Age Differences on Marital Status</h2>
 					<form class="form-inline">
 						<div class="form-group">
 							<label for="ranking-type">Filter by Marital Status</label>
@@ -113,23 +105,53 @@
 								<option value="Widowed">Widowed</option>
 								<option value="Divorced">Divorced</option>
 							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+-->
+		<hr>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="row">
+					<!-- Select box to choose the ranking type -->
+					<form class="form-inline">
+						<div class="form-group">
+							<label for="ranking-type">Scale against </label>
+							<select class="form-control" id="matrix-ranking-type">
+								<option value="across_all_freqs">both frequency and quality &nbsp;</option>
+								<option value="across_this_freq">frequency only</option>
+								<option value="across_qualities">quality only</option>
+							</select>
 
 							<!-- Activity IV -->
 							<!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
 						</div>
 					</form>
+				</div>
+				<div class="row">
+					<div class="col-md-6" id="matrix-vis">
+						<!--					<img src="img/quality_relationship_sex.png" class="center responsive .img-fluid" id="quality-relationship-img">-->
 
-<!--					<img src="img/age_difference_marriage.png" class="center responsive .img-fluid" id="age-difference-img"> -->
-
+						<div class="col-md-6" id="matrix-vis"></div>
+				<div class="col-md-6">
+					<h1>How does frequency of sex influence quality of relationship?</h1>
+					<h3>We see that the respondents tended to rate their relationships excellent regardless
+						of sex frequency, and there is not a clear trend. The data also suggest that very few couples
+						will have a frequency of more than twice a week.</h3>
+				</div>
 			</div>
 		</div>
 
+		<hr>
 		<hr>
 
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 middle-space">
-					<h1 id="progress">How long do people date before they get married? <br></h1>
+					<h1>How long do people date before they get married? <br></h1>
 
 					<h3>On the right, each line segment represents the duration that a couple
 					dated before getting married, plotted by age. To view the visualization in
