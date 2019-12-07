@@ -29,12 +29,12 @@ img {
 .axis path,
 .axis line {
   fill: none;
-  stroke: white;
+  stroke: gray();
   shape-rendering: crispEdges;
 }
 .axis text {
   font-size: 13px;
-  fill: white;
+  fill: gray();
   font-weight: 100px;
 }
 
@@ -82,26 +82,26 @@ img {
 }
 
 h1 {
-  color: black;
+  color: #ff8aa3;
   margin-top: 20px;
   font-weight: 200;
 }
 
 h2 {
-  color: white;
+  color: #ff8aa3;
   margin-top: 20px;
   font-weight: 200;
 }
 
 h3 {
-  color: white;
+  color: gray();
   margin-top: 20px;
   font-weight: 150;
 }
 
 h4 {
   margin-top: 50px;
-  color: white;
+  color: gray();
   margin-top: 20px;
   font-weight: 100;
 }
@@ -119,7 +119,8 @@ img {
 }
 
 body {
-  background: #ff99b4;
+  /* background: #ff99b4; */
+  background: #FFE4E6;
 }
 
 .header {
@@ -157,11 +158,6 @@ body {
   margin-right: auto;
 }
 
-.label {
-  color: #ea99b4;
-  margin-bottom: 23px;
-}
-
 .funding {
   margin-bottom: 100px;
 }
@@ -182,49 +178,49 @@ div img {
   width: 500px;
 }
 
-#attribute-title {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  /** text-align: center; **/
-}
-
 #selected {
   margin-top: 130px;
   text-align: center;
 }
 
-#progress {
-  margin-top: 30px;
-}
-
-#malaria-parasites {
-  margin-bottom: 100px;
-}
-
-#key-facts {
-  margin-bottom: 40px;
-}
-
 #quotes {
   text-align: center;
-  color: white;
+  color: gray();
   font-style: italic;
   font-family: cursive;
 }
 
 .legendText {
-  fill: white;
+  fill: gray();
   font-weight: 200;
 }
 
 .axisTitle {
-  fill: white;
+  fill: gray();
   font-weight: 200;
 }
 
 label {
-  color: white;
+  color: gray();
   margin-right: 10px;
   margin-bottom: 20px;
   font-weight: 200;
+  text-align: center;
 }
+
+#age-vis {
+  text-align: center;
+  margin-top: 25px;
+}
+
+form {
+  text-align: center;
+}
+
+.form-group {
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
