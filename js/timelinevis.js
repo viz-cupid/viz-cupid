@@ -127,7 +127,6 @@ TimelineVis.prototype.initVis = function() {
     vis.wrangleData();
 };
 
-
 /*
  * Data wrangling
  */
@@ -143,8 +142,8 @@ vis.yOrig = vis.yOrig
         .domain([0, vis.initialCount-1]);
     vis.y = vis.yOrig.copy();
 
-    // (Update visualization)
-    vis.updateVis();
+  // (Update visualization)
+  vis.updateVis();
 };
 
 /*
@@ -290,23 +289,81 @@ TimelineVis.prototype.highlightTimeline = function(node) {
         .raise()
         .selectAll("path")
         .attr("opacity", 1);
-    d3.select(node.parentNode)
+      d3.select(this.parentNode)
         .selectAll(".date")
         .attr("opacity", 1)
-        .attr("r", vis.r * 1.9);
+        // .transition()
+        // .duration(750)
+        .attr("r", vis.r * 1.5);
+    })
+    .on("mouseout", function() {
+      d3.selectAll("path")
+        // .transition()
+        .attr("opacity", 1);
+      d3.selectAll(".date")
+        // .transition()
+        .attr("opacity", 1);
+      d3.select(this.parentNode)
+        .selectAll(".date")
+        // .transition()
+        .attr("r", vis.r);
+    })
+    .merge(date)
+    .on("mouseover", function(d) {
+      vis.highlightTimeline(this);
+
+      // make this circle slightly bigger
+      d3.select(this)
+        .raise()
+        .attr("opacity", 0.7)
+        .attr("r", vis.r * 3);
+
+      // show tool tip
+      var groupDates = d3.select(this.parentNode).datum().dates;
+      vis.tool_tip.show(groupDates, d.milestone);
+    })
+    .on("click", function() {
+      d3.select(this).lower();
+      d3.select(this.parentNode)
+        .selectAll("path")
+        .lower();
+    })
+    .on("mouseout", function() {
+      vis.unHighlightTimeline(this);
+    })
+    .attr("r", vis.r)
+    .attr("fill", d => vis.color(d.milestone))
+    .attr("cx", d => vis.x(d.date));
+  date.exit().remove();
+};
+
+TimelineVis.prototype.highlightTimeline = function(node) {
+  var vis = this;
+
+  // gray out background
+  d3.selectAll("path").attr("opacity", 0.1);
+  d3.selectAll(".date").attr("opacity", 0.3);
+
+  // highlight this timeline
+  d3.select(node.parentNode)
+    .raise()
+    .selectAll("path")
+    .attr("opacity", 1);
+  d3.select(node.parentNode)
+    .selectAll(".date")
+    .attr("opacity", 1)
+    .attr("r", vis.r * 1.9);
 };
 
 TimelineVis.prototype.unHighlightTimeline = function(node) {
-    var vis = this;
+  var vis = this;
 
-    d3.selectAll("path")
-        .attr("opacity", 1);
-    d3.selectAll(".date")
-        .attr("opacity", 1);
-    d3.select(node.parentNode)
-        .selectAll(".date")
-        .attr("r", vis.r);
-    vis.tool_tip.hide();
+  d3.selectAll("path").attr("opacity", 1);
+  d3.selectAll(".date").attr("opacity", 1);
+  d3.select(node.parentNode)
+    .selectAll(".date")
+    .attr("r", vis.r);
+  vis.tool_tip.hide();
 };
 
 TimelineVis.prototype.onSelectionChange = function(rangeStart, rangeEnd) {
@@ -321,15 +378,13 @@ TimelineVis.prototype.onSelectionChange = function(rangeStart, rangeEnd) {
 };
 
 function relationshipLength(d) {
-    return (d.dates[d.dates.length-1].date - d.dates[0].date);
+  return d.dates[d.dates.length - 1].date - d.dates[0].date;
 }
 
 function minDate(data) {
-    return d3.min(data, d => d.dates[0].date)
+  return d3.min(data, d => d.dates[0].date);
 }
 
 function maxDate(data) {
-    return d3.max(data, d => d.dates[d.dates.length-1].date)
+  return d3.max(data, d => d.dates[d.dates.length - 1].date);
 }
-
-
