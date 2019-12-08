@@ -6,9 +6,13 @@
 
 TimelineVis = function(_parentElement, _data) {
     this.parentElement = _parentElement;
-    this.data = _data;
     this.oData = _data.map(d => d)
         .sort((a, b) => a.dates[0].date - b.dates[0].date);
+    this.data = this.oData.filter(function(d) {
+        var a = d.dates[0].date >= new Date("January 2010");
+        var b = d.dates[0].date <= new Date("January 2017");
+        return a && b;
+    });
 
     this.milestoneMap = {
         "marry": "Married",
@@ -27,6 +31,7 @@ TimelineVis = function(_parentElement, _data) {
 TimelineVis.prototype.initVis = function() {
     var vis = this;
     vis.r = 4;
+    vis.initialCount = 50;
 
     vis.margin = { top: 30, right: 40, bottom: 120, left: 40 };
 
@@ -58,8 +63,9 @@ TimelineVis.prototype.initVis = function() {
         .domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)])
         .range([5, vis.width-5]);
     vis.y = d3.scaleLinear()
-        .domain([0, 79])
+        .domain([0, vis.initialCount-1])
         .range([5, vis.height-5]);
+    console.log(vis.y.domain());
 
     vis.color = d3.scaleOrdinal()
         .domain(Object.keys(vis.milestoneMap))
@@ -128,10 +134,13 @@ TimelineVis.prototype.initVis = function() {
 TimelineVis.prototype.wrangleData = function() {
     var vis = this;
 
-    vis.data = vis.data.sort((a, b) => a.dates[0].date - b.dates[0].date);
+    vis.xOrig = vis.xOrig
+        .domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)]);
+    vis.x = vis.xOrig.copy();
 
-    // Until zoom/scroll implemented, only take the first 70 to avoid clutter
-    vis.data = vis.data.filter((_, i) => i < 80);
+    vis.yOrig = vis.yOrig
+        .domain([0, vis.initialCount-1]);
+    vis.y = vis.yOrig.copy();
 
     // (Update visualization)
     vis.updateVis();
@@ -145,7 +154,7 @@ TimelineVis.prototype.wrangleData = function() {
 TimelineVis.prototype.updateVis = function() {
     var vis = this;
     vis.r = (vis.y.range()[1] - vis.y.range()[0]) / (vis.y.domain()[1] - vis.y.domain()[0]) / 2 - 0.5;
-    // console.log(vis.r);
+    vis.r = vis.r < 3 ? 3 : vis.r;
 
     // clip chart area
 
@@ -162,6 +171,8 @@ TimelineVis.prototype.updateVis = function() {
 
     var timelineGroup = timeline.enter().append("g")
         .attr("class", "timeline");
+
+    timeline.exit().remove();
 
     vis.svg.selectAll(".timeline")
         // .transition()
@@ -266,6 +277,17 @@ TimelineVis.prototype.unHighlightTimeline = function(node) {
         .selectAll(".date")
         .attr("r", vis.r);
     vis.tool_tip.hide();
+};
+
+TimelineVis.prototype.onSelectionChange = function(rangeStart, rangeEnd) {
+    var vis = this;
+
+    // Filter original unfiltered data depending on selected time period (brush)
+    vis.data = vis.oData.filter(function(d){
+        return d.dates[0].date >= rangeStart && d.dates[0].date <= rangeEnd;
+    });
+
+    vis.wrangleData();
 };
 
 function relationshipLength(d) {

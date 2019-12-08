@@ -229,8 +229,6 @@ label {
   font-weight: 200;
 }
 
-.zoom {
-  fill: #ccc;
-  fill-opacity: .5;
-  pointer-events: none;
+.area {
+  fill: #980043;
 }
