@@ -120,7 +120,7 @@ img {
 
 body {
   /* background: #ff99b4; */
-  background: #FFE4E6;
+  background: #ffe4e6;
 }
 
 .header {
@@ -132,6 +132,10 @@ body {
   font-family: "Helvetica Neue";
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.matrix-text {
+  font-weight: 200;
 }
 
 .container {
@@ -242,7 +246,7 @@ form {
 
 .heart {
   width: 1000px;
-  height:auto;
+  height: auto;
 }
 
 #heart-text1 {
@@ -260,5 +264,4 @@ form {
   display: block;
   margin-left: auto;
   margin-right: auto;
-
 }

@@ -1,22 +1,397 @@
 [
   {
     "frequency": "Once a month or less",
-    "ratings": [13, 19, 95, 359, 482]
+    "respondents": 969,
+    "respondents_per_quality": [
+      13,
+      19,
+      95,
+      359,
+      482
+    ],
+    "ratios_per_quality": {
+      "across_all_freqs": [
+        {
+          "ratio": 0.004839910647803425,
+          "num_respondents": 13
+        },
+        {
+          "ratio": 0.007073715562174236,
+          "num_respondents": 19
+        },
+        {
+          "ratio": 0.03536857781087118,
+          "num_respondents": 95
+        },
+        {
+          "ratio": 0.1336559940431869,
+          "num_respondents": 359
+        },
+        {
+          "ratio": 0.17944899478778853,
+          "num_respondents": 482
+        }
+      ],
+      "across_this_freq": [
+        {
+          "ratio": 0.013415892672858616,
+          "num_respondents": 13
+        },
+        {
+          "ratio": 0.0196078431372549,
+          "num_respondents": 19
+        },
+        {
+          "ratio": 0.09803921568627451,
+          "num_respondents": 95
+        },
+        {
+          "ratio": 0.37048503611971106,
+          "num_respondents": 359
+        },
+        {
+          "ratio": 0.49742002063983487,
+          "num_respondents": 482
+        }
+      ],
+      "across_qualities": [
+        {
+          "ratio": 0.2826086956521739,
+          "num_respondents": 13
+        },
+        {
+          "ratio": 0.296875,
+          "num_respondents": 19
+        },
+        {
+          "ratio": 0.23514851485148514,
+          "num_respondents": 95
+        },
+        {
+          "ratio": 0.20305429864253394,
+          "num_respondents": 359
+        },
+        {
+          "ratio": 0.14126611957796015,
+          "num_respondents": 482
+        }
+      ]
+    }
   },
   {
     "frequency": "2 to 3 times a month",
-    "ratings": [5, 6, 28, 156, 324]
+    "respondents": 519,
+    "respondents_per_quality": [
+      5,
+      6,
+      28,
+      156,
+      324
+    ],
+    "ratios_per_quality": {
+      "across_all_freqs": [
+        {
+          "ratio": 0.0018615040953090098,
+          "num_respondents": 5
+        },
+        {
+          "ratio": 0.0022338049143708115,
+          "num_respondents": 6
+        },
+        {
+          "ratio": 0.010424422933730455,
+          "num_respondents": 28
+        },
+        {
+          "ratio": 0.058078927773641105,
+          "num_respondents": 156
+        },
+        {
+          "ratio": 0.12062546537602382,
+          "num_respondents": 324
+        }
+      ],
+      "across_this_freq": [
+        {
+          "ratio": 0.009633911368015413,
+          "num_respondents": 5
+        },
+        {
+          "ratio": 0.011560693641618497,
+          "num_respondents": 6
+        },
+        {
+          "ratio": 0.05394990366088632,
+          "num_respondents": 28
+        },
+        {
+          "ratio": 0.30057803468208094,
+          "num_respondents": 156
+        },
+        {
+          "ratio": 0.6242774566473989,
+          "num_respondents": 324
+        }
+      ],
+      "across_qualities": [
+        {
+          "ratio": 0.10869565217391304,
+          "num_respondents": 5
+        },
+        {
+          "ratio": 0.09375,
+          "num_respondents": 6
+        },
+        {
+          "ratio": 0.06930693069306931,
+          "num_respondents": 28
+        },
+        {
+          "ratio": 0.08823529411764706,
+          "num_respondents": 156
+        },
+        {
+          "ratio": 0.09495896834701055,
+          "num_respondents": 324
+        }
+      ]
+    }
   },
   {
     "frequency": "3 to 6 times a week",
-    "ratings": [0, 1, 21, 90, 256]
+    "respondents": 368,
+    "respondents_per_quality": [
+      0,
+      1,
+      21,
+      90,
+      256
+    ],
+    "ratios_per_quality": {
+      "across_all_freqs": [
+        {
+          "ratio": 0.0,
+          "num_respondents": 0
+        },
+        {
+          "ratio": 0.00037230081906180194,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.00781831720029784,
+          "num_respondents": 21
+        },
+        {
+          "ratio": 0.03350707371556218,
+          "num_respondents": 90
+        },
+        {
+          "ratio": 0.0953090096798213,
+          "num_respondents": 256
+        }
+      ],
+      "across_this_freq": [
+        {
+          "ratio": 0.0,
+          "num_respondents": 0
+        },
+        {
+          "ratio": 0.002717391304347826,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.057065217391304345,
+          "num_respondents": 21
+        },
+        {
+          "ratio": 0.24456521739130435,
+          "num_respondents": 90
+        },
+        {
+          "ratio": 0.6956521739130435,
+          "num_respondents": 256
+        }
+      ],
+      "across_qualities": [
+        {
+          "ratio": 0.0,
+          "num_respondents": 0
+        },
+        {
+          "ratio": 0.015625,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.05198019801980198,
+          "num_respondents": 21
+        },
+        {
+          "ratio": 0.05090497737556561,
+          "num_respondents": 90
+        },
+        {
+          "ratio": 0.07502930832356389,
+          "num_respondents": 256
+        }
+      ]
+    }
   },
   {
     "frequency": "Once or twice a week",
-    "ratings": [1, 4, 36, 206, 495]
+    "respondents": 744,
+    "respondents_per_quality": [
+      1,
+      4,
+      36,
+      206,
+      495
+    ],
+    "ratios_per_quality": {
+      "across_all_freqs": [
+        {
+          "ratio": 0.00037230081906180194,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.0014892032762472078,
+          "num_respondents": 4
+        },
+        {
+          "ratio": 0.01340282948622487,
+          "num_respondents": 36
+        },
+        {
+          "ratio": 0.0766939687267312,
+          "num_respondents": 206
+        },
+        {
+          "ratio": 0.18428890543559195,
+          "num_respondents": 495
+        }
+      ],
+      "across_this_freq": [
+        {
+          "ratio": 0.0013440860215053765,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.005376344086021506,
+          "num_respondents": 4
+        },
+        {
+          "ratio": 0.04838709677419355,
+          "num_respondents": 36
+        },
+        {
+          "ratio": 0.2768817204301075,
+          "num_respondents": 206
+        },
+        {
+          "ratio": 0.6653225806451613,
+          "num_respondents": 495
+        }
+      ],
+      "across_qualities": [
+        {
+          "ratio": 0.021739130434782608,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.0625,
+          "num_respondents": 4
+        },
+        {
+          "ratio": 0.0891089108910891,
+          "num_respondents": 36
+        },
+        {
+          "ratio": 0.1165158371040724,
+          "num_respondents": 206
+        },
+        {
+          "ratio": 0.1450762016412661,
+          "num_respondents": 495
+        }
+      ]
+    }
   },
   {
     "frequency": "Once a day or more",
-    "ratings": [1, 1, 9, 22, 53]
+    "respondents": 86,
+    "respondents_per_quality": [
+      1,
+      1,
+      9,
+      22,
+      53
+    ],
+    "ratios_per_quality": {
+      "across_all_freqs": [
+        {
+          "ratio": 0.00037230081906180194,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.00037230081906180194,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.0033507073715562173,
+          "num_respondents": 9
+        },
+        {
+          "ratio": 0.008190618019359643,
+          "num_respondents": 22
+        },
+        {
+          "ratio": 0.019731943410275503,
+          "num_respondents": 53
+        }
+      ],
+      "across_this_freq": [
+        {
+          "ratio": 0.011627906976744186,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.011627906976744186,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.10465116279069768,
+          "num_respondents": 9
+        },
+        {
+          "ratio": 0.2558139534883721,
+          "num_respondents": 22
+        },
+        {
+          "ratio": 0.6162790697674418,
+          "num_respondents": 53
+        }
+      ],
+      "across_qualities": [
+        {
+          "ratio": 0.021739130434782608,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.015625,
+          "num_respondents": 1
+        },
+        {
+          "ratio": 0.022277227722772276,
+          "num_respondents": 9
+        },
+        {
+          "ratio": 0.012443438914027148,
+          "num_respondents": 22
+        },
+        {
+          "ratio": 0.015533411488862838,
+          "num_respondents": 53
+        }
+      ]
+    }
   }
 ]
