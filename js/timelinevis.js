@@ -52,6 +52,18 @@ TimelineVis.prototype.initVis = function() {
         )
         .attr("overflow", "auto");
 
+    vis.scale_svg = d3
+        .select("#timeline-vis-scale")
+        .append("svg")
+        .attr("width", vis.width + vis.margin.left + vis.margin.right)
+        .attr("height", 100)
+        .append("g")
+        .attr(
+            "transform",
+            "translate(" + vis.margin.left + "," + vis.margin.top + ")"
+        )
+        .attr("overflow", "auto");
+
     // SVG clipping path
     vis.svg.append("defs")
         .append("clipPath")
@@ -72,6 +84,35 @@ TimelineVis.prototype.initVis = function() {
         .domain(Object.keys(vis.milestoneMap))
         .range(['#980043', '#dd1c77', '#df65b0', '#c994c7', '#d4b9da', '#f1eef6']);
 
+    vis.color_array = ["#c994c7", "#df65b0", "#dd1c77", "#980043"];
+
+    var legendkey = ["Met for the First Time", "Started Dating", "Moved in Together", "Married"];
+    var midpoint = vis.width / 2;
+    var line_length = 400;
+    vis.scale_svg.append("line")
+        .attr("x1", midpoint - line_length)
+        .attr("x2", midpoint + line_length)
+        .attr("y1", 0)
+        .attr("y2", 0)
+        .attr("stroke", "black")
+    vis.scale_svg.selectAll("circle")
+        .data(vis.color_array)
+        .enter()
+        .append("circle")
+        .attr("cx", (d, i) => midpoint - line_length + i * line_length * 2 / 3)
+        .attr("cy", 0)
+        .attr("r", 15)
+        .attr("fill", d => d)
+        .attr("stroke", "black")
+    vis.scale_svg.selectAll("text")
+        .data(legendkey)
+        .enter()
+        .append("text")
+        .attr("x", (d, i) => midpoint - line_length + i * line_length * 2 / 3)
+        .attr("y", 30)
+        .style("text-anchor", "middle")
+        .style("font-weight", "200")
+        .text(text => text)
 
     // tool tip
     vis.tool_tip = d3
