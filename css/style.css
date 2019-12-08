@@ -134,6 +134,10 @@ body {
   margin-bottom: 50px;
 }
 
+.matrix-text {
+  font-weight: 200;
+}
+
 .container {
   margin-bottom: 100px;
 }
