@@ -38,6 +38,10 @@
     - This is where the structure of the HTML website lives.
   - style.css
     - This is where we style all of our HTML and SVG elements.
+    
+## Full Stanford Survey Dataset
+
+File pathway: python/hcmst2017.csv
 
 ## Repository URL
 
