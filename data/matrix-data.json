@@ -56,23 +56,23 @@
       ],
       "across_qualities": [
         {
-          "ratio": 0.2826086956521739,
+          "ratio": 0.5652173913043478,
           "num_respondents": 13
         },
         {
-          "ratio": 0.296875,
+          "ratio": 0.59375,
           "num_respondents": 19
         },
         {
-          "ratio": 0.23514851485148514,
+          "ratio": 0.47029702970297027,
           "num_respondents": 95
         },
         {
-          "ratio": 0.20305429864253394,
+          "ratio": 0.4061085972850679,
           "num_respondents": 359
         },
         {
-          "ratio": 0.14126611957796015,
+          "ratio": 0.2825322391559203,
           "num_respondents": 482
         }
       ]
@@ -135,23 +135,23 @@
       ],
       "across_qualities": [
         {
-          "ratio": 0.10869565217391304,
+          "ratio": 0.21739130434782608,
           "num_respondents": 5
         },
         {
-          "ratio": 0.09375,
+          "ratio": 0.1875,
           "num_respondents": 6
         },
         {
-          "ratio": 0.06930693069306931,
+          "ratio": 0.13861386138613863,
           "num_respondents": 28
         },
         {
-          "ratio": 0.08823529411764706,
+          "ratio": 0.17647058823529413,
           "num_respondents": 156
         },
         {
-          "ratio": 0.09495896834701055,
+          "ratio": 0.1899179366940211,
           "num_respondents": 324
         }
       ]
@@ -218,19 +218,19 @@
           "num_respondents": 0
         },
         {
-          "ratio": 0.015625,
+          "ratio": 0.03125,
           "num_respondents": 1
         },
         {
-          "ratio": 0.05198019801980198,
+          "ratio": 0.10396039603960396,
           "num_respondents": 21
         },
         {
-          "ratio": 0.05090497737556561,
+          "ratio": 0.10180995475113122,
           "num_respondents": 90
         },
         {
-          "ratio": 0.07502930832356389,
+          "ratio": 0.15005861664712777,
           "num_respondents": 256
         }
       ]
@@ -293,23 +293,23 @@
       ],
       "across_qualities": [
         {
-          "ratio": 0.021739130434782608,
+          "ratio": 0.043478260869565216,
           "num_respondents": 1
         },
         {
-          "ratio": 0.0625,
+          "ratio": 0.125,
           "num_respondents": 4
         },
         {
-          "ratio": 0.0891089108910891,
+          "ratio": 0.1782178217821782,
           "num_respondents": 36
         },
         {
-          "ratio": 0.1165158371040724,
+          "ratio": 0.2330316742081448,
           "num_respondents": 206
         },
         {
-          "ratio": 0.1450762016412661,
+          "ratio": 0.2901524032825322,
           "num_respondents": 495
         }
       ]
@@ -372,23 +372,23 @@
       ],
       "across_qualities": [
         {
-          "ratio": 0.021739130434782608,
+          "ratio": 0.043478260869565216,
           "num_respondents": 1
         },
         {
-          "ratio": 0.015625,
+          "ratio": 0.03125,
           "num_respondents": 1
         },
         {
-          "ratio": 0.022277227722772276,
+          "ratio": 0.04455445544554455,
           "num_respondents": 9
         },
         {
-          "ratio": 0.012443438914027148,
+          "ratio": 0.024886877828054297,
           "num_respondents": 22
         },
         {
-          "ratio": 0.015533411488862838,
+          "ratio": 0.031066822977725676,
           "num_respondents": 53
         }
       ]
