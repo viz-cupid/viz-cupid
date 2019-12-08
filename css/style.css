@@ -29,12 +29,12 @@ img {
 .axis path,
 .axis line {
   fill: none;
-  stroke: white;
+  stroke: gray();
   shape-rendering: crispEdges;
 }
 .axis text {
   font-size: 13px;
-  fill: white;
+  fill: gray();
   font-weight: 100px;
 }
 
@@ -82,26 +82,26 @@ img {
 }
 
 h1 {
-  color: black;
+  color: #ff8aa3;
   margin-top: 20px;
   font-weight: 200;
 }
 
 h2 {
-  color: white;
+  color: #ff8aa3;
   margin-top: 20px;
   font-weight: 200;
 }
 
 h3 {
-  color: white;
+  color: gray();
   margin-top: 20px;
   font-weight: 150;
 }
 
 h4 {
   margin-top: 50px;
-  color: white;
+  color: gray();
   margin-top: 20px;
   font-weight: 100;
 }
@@ -119,15 +119,16 @@ img {
 }
 
 body {
-  background: #ff99b4;
+  /* background: #ff99b4; */
+  background: #FFE4E6;
 }
 
 .header {
   padding: 60px;
   text-align: center;
-  background: #ff8aa3;
+  background: #7f0000;
   color: white;
-  font-size: 50px;
+  font-size: 70px;
   font-family: "Helvetica Neue";
   margin-top: 50px;
   margin-bottom: 50px;
@@ -135,6 +136,7 @@ body {
 
 .container {
   margin-bottom: 100px;
+  max-width: 1300px;
 }
 
 .caption {
@@ -157,11 +159,6 @@ body {
   margin-right: auto;
 }
 
-.label {
-  color: #ea99b4;
-  margin-bottom: 23px;
-}
-
 .funding {
   margin-bottom: 100px;
 }
@@ -182,55 +179,86 @@ div img {
   width: 500px;
 }
 
-#attribute-title {
-  margin-top: 60px;
-  margin-bottom: 20px;
-  /** text-align: center; **/
-}
-
 #selected {
   margin-top: 130px;
   text-align: center;
 }
 
-#progress {
-  margin-top: 30px;
-}
-
-#malaria-parasites {
-  margin-bottom: 100px;
-}
-
-#key-facts {
-  margin-bottom: 40px;
-}
-
 #quotes {
   text-align: center;
-  color: white;
+  color: gray();
   font-style: italic;
   font-family: cursive;
 }
 
 .legendText {
-  fill: white;
+  fill: gray();
   font-weight: 200;
 }
 
 .axisTitle {
-  fill: white;
+  fill: gray();
   font-weight: 200;
 }
 
 label {
-  color: white;
+  color: gray();
   margin-right: 10px;
   margin-bottom: 20px;
   font-weight: 200;
+  text-align: center;
 }
 
-.zoom {
-  fill: #ccc;
-  fill-opacity: .5;
-  pointer-events: none;
+#age-vis {
+  text-align: center;
+  margin-top: 25px;
+}
+
+form {
+  text-align: center;
+}
+
+.form-group {
+  text-align: center;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Container holding the image and the text */
+.img-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.heart {
+  width: 1000px;
+  height:auto;
+}
+
+#heart-text1 {
+  margin-bottom: 150px;
+}
+
+#heart-text2 {
+  margin-bottom: -150px;
+}
+
+#arrow {
+  transform: rotate(227deg);
+  width: 250px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
