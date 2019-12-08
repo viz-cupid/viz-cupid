@@ -49,7 +49,8 @@ TimelineVis.prototype.initVis = function() {
         .attr(
             "transform",
             "translate(" + vis.margin.left + "," + vis.margin.top + ")"
-        );
+        )
+        .attr("overflow", "auto");
 
     // SVG clipping path
     vis.svg.append("defs")
@@ -70,6 +71,7 @@ TimelineVis.prototype.initVis = function() {
     vis.color = d3.scaleOrdinal()
         .domain(Object.keys(vis.milestoneMap))
         .range(['#980043', '#dd1c77', '#df65b0', '#c994c7', '#d4b9da', '#f1eef6']);
+
 
     // tool tip
     vis.tool_tip = d3
@@ -121,7 +123,6 @@ TimelineVis.prototype.initVis = function() {
         .attr("transform", "translate(0," + (vis.height) + ")");
     vis.clipGroup = vis.svg.append("g");
 
-
     // (Filter, aggregate, modify data)
     vis.wrangleData();
 };
@@ -138,7 +139,7 @@ TimelineVis.prototype.wrangleData = function() {
         .domain([d3.min(vis.data, d => d.dates[0].date), d3.max(vis.data, d => d.dates[d.dates.length-1].date)]);
     vis.x = vis.xOrig.copy();
 
-    vis.yOrig = vis.yOrig
+vis.yOrig = vis.yOrig
         .domain([0, vis.initialCount-1]);
     vis.y = vis.yOrig.copy();
 
@@ -216,6 +217,35 @@ TimelineVis.prototype.updateVis = function() {
     date.enter().append("circle")
         .attr("class", "date")
         .attr("stroke", "black")
+        .on("mouseover", function() {
+            d3.selectAll("path")
+                .attr("opacity", 0.1);
+            d3.selectAll(".date")
+                .attr("opacity", 0.3);
+            d3.select(this).raise();
+            d3.select(this.parentNode)
+                .raise()
+                .selectAll("path")
+                .attr("opacity", 1);
+            d3.select(this.parentNode)
+                .selectAll(".date")
+                .attr("opacity", 1)
+                // .transition()
+                // .duration(750)
+                .attr("r", vis.r * 1.5);
+        })
+        .on("mouseout", function() {
+            d3.selectAll("path")
+                // .transition()
+                .attr("opacity", 1);
+            d3.selectAll(".date")
+                // .transition()
+                .attr("opacity", 1);
+            d3.select(this.parentNode)
+                .selectAll(".date")
+                // .transition()
+                .attr("r", vis.r);
+        })
         .merge(date)
         .on("mouseover", function(d) {
             vis.highlightTimeline(this);

@@ -22,8 +22,8 @@ AgeVis.prototype.initVis = function() {
     var margin = {top: 20, right: 30, bottom: 50, left: 50};
 
     // Width and height as the inner dimensions of the chart area
-    vis.width = 600 - margin.left - margin.right,
-    vis.height = 500 - margin.top - margin.bottom;
+    vis.width = 800 - margin.left - margin.right,
+    vis.height = 650 - margin.top - margin.bottom;
 
     // Define 'svg' as a child-element (g) from the drawing area and include spaces
     vis.svg = d3
