@@ -14,17 +14,6 @@
       <h1 class="header">
         Tracing Dating, Marriage, and Everything In-Between
       </h1>
-      <!--
-		<div id="quotes">
-			<h2>“Love in its essence is spiritual fire.” — Seneca</h2>
-			<p></p>
-			<h2>“You know it's love when all you want is that person to be happy, even if you're not part of their happiness.” — Julia Roberts</h2>
-			<p></p>
-			<h2>“'Tis better to have loved and lost than never to have loved at all.” — Alfred Lord Tennyson</h2>
-		</div>
-
-		<hr>
--->
 
       <div class="img-container">
         <img src="img/heart3.svg" class="heart" />
@@ -51,22 +40,6 @@
         </div>
       </div>
 
-      <!--
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6">
-					<h1>Love touches all of us, yet there is so much uncertainty surrounding it.
-						We often wonder: where will we meet our soulmate? How long do people date for before they get married?
-						Does our sexual life affect the quality of our relationships?
-					</h1>
-				</div>
-				<div class="col-md-6">
-					<img src="img/heart-bokeh.jpeg" class="center responsive .img-fluid" id="titanic-img">
-				</div>
-			</div>
-		</div>
--->
-
       <hr />
 
       <div class="container-fluid">
@@ -78,7 +51,7 @@
         <h3>
           Below, each point represents a couple, with age of each survey
           respondent plotted against their partner's age. To view detailed
-          information, about the age and marital status of each respondent and
+          information about the age and marital status of each respondent and
           the partner, hover over the circles on the visualization.
         </h3>
 
@@ -106,42 +79,6 @@
           closely along the diagonal.
         </h3>
       </div>
-
-      <!--
->>>>>>> origin/master
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6 middle-space">
-					<h1>Could age differences within couples have an effect on marital status?</h1>
-					<p></p>
-
-					<h3>Here, we see that there is indeed a significant difference between
-						couples who are many years apart in age and those that are closer in age
-						in terms of marital status. Those with similar ages lie on the y=x dotted line.
-						<br><br> To view detailed information, about the age and marital status of each respondent
-						and the partner, hover over the circles on the visualization.</h3>
-
-				</div>
-				<div class="col-md-6" id="age-vis">
-					<h2>The Effect of Age Differences on Marital Status</h2>
-					<form class="form-inline">
-						<div class="form-group">
-							<label for="ranking-type">Filter by Marital Status</label>
-							<select class="form-control" id="ranking-type">
-								<option value="all_attributes">All attributes</option>
-								<option value="Living with partner">Living with partner</option>
-								<option value="Married">Married</option>
-								<option value="Never married">Never married</option>
-								<option value="Separated">Separated</option>
-								<option value="Widowed">Widowed</option>
-								<option value="Divorced">Divorced</option>
-							</select>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
--->
       <hr />
 
       <!--MATRIX VISUALIZATION-->
@@ -163,15 +100,11 @@
               <option value="across_this_freq">frequency categories</option>
               <option value="across_qualities">quality categories</option>
             </select>
-
-            <!-- Activity IV -->
-            <!--<button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>-->
           </div>
         </form>
 
         <div class="row">
           <div class="col-md-12" id="matrix-vis"></div>
-          <h1>How does frequency of sex influence quality of relationship?</h1>
           <h3>
             We see that the respondents tended to rate their relationships
             excellent regardless of sex frequency, and there is not a clear
@@ -184,43 +117,30 @@
       <hr />
 
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 middle-space">
-            <h1>How long do people date before they get married? <br /></h1>
+        <h1>How long do people date before they get married? <br /></h1>
 
-            <h3>
-              On the right, each line segment represents the duration that a
-              couple dated before getting married, plotted by age. To view the
-              visualization in more detail, use the brushing component on the
-              area chart below it.
-            </h3>
+        <h3>
+          On the right, each line segment represents the duration that a couple
+          dated before getting married, plotted by age. To view the
+          visualization in more detail, use the brushing component on the area
+          chart below it.
+        </h3>
 
-            <h3>
-              One couple dated for thirty some years before finally getting
-              married, but most other couples did not take nearly as long.
-              Another couple went through meeting each other and getting married
-              within a year. On average we see that most respondents dated for
-              less than 6 years before getting married.
-            </h3>
+        <h3>
+          One couple dated for thirty some years before finally getting married,
+          but most other couples did not take nearly as long. Another couple
+          went through meeting each other and getting married within a year. On
+          average we see that most respondents dated for less than 6 years
+          before getting married.
+        </h3>
 
-            <p></p>
-            <!--					<h2>Are there differences between heterosexual and same-sex marriages?</h2>-->
-            <!--					<h3>We see that there are indeed differences between heterosexual and-->
-            <!--					same-sex marriages, as we see [insert trends after analyzing visualization].</h3>-->
-            <!--					<p></p>-->
-          </div>
-          <div class="col-md-6">
-            <h4 id="selected"></h4>
-
-            <h2>Time Spent Dating Before Marriage</h2>
-
-            <!--					<img src="img/dating_time_before_marriage.png" class="center responsive .img-fluid" id="dating-time-img">-->
-            <!--					TODO: timeline-vis and time-area-vis -->
-            <div id="timeline-vis"></div>
-            <!--					<div id="time-area-vis"></div>-->
-          </div>
-        </div>
+        <p></p>
       </div>
+      <h4 id="selected"></h4>
+
+      <h2>Time Spent Dating Before Marriage</h2>
+
+      <div id="timeline-vis"></div>
     </div>
 
     <!-- Load JS libraries -->
@@ -233,6 +153,7 @@
     <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="js/d3-tip.js"></script>
+    <script src="js/dateformat.js"></script>
 
     <!-- Visualization objects -->
     <script src="js/matrixvis.js"></script>
