@@ -164,7 +164,7 @@ TimelineVis.prototype.updateVis = function() {
         .attr("class", "timeline");
 
     vis.svg.selectAll(".timeline")
-        .transition()
+        // .transition()
         .attr("transform", (d, i) => `translate(0, ${vis.y(i)})`);
 
     timelineGroup.append("path")
