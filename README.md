@@ -15,14 +15,17 @@
   - queue.min.js
 - Jeb's code
   - matrixvis.js
+  - MatrixVisDataProcessing.ipynb
 - Rachel's code
   - age_difference.js
+  - AgeDifferenceDataProcessing.ipynb
 - Gunnar's code
   - timeareavis.js
   - timelinevis.js
+  - TimeVisDataProcessing.ipynb
 - Shared code
-
   - main.js
+  - index.html
 
 ## Repository URL
 
