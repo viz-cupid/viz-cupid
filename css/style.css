@@ -218,6 +218,10 @@ label {
   margin-top: 25px;
 }
 
+.area {
+  fill: #980043;
+}
+
 form {
   text-align: center;
 }

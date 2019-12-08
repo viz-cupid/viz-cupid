@@ -40,7 +40,14 @@ function createVis(error, matrixData, ageData, timeData) {
       .filter(dt => dt.date !== null);
   });
   var newTimeData = timeData.filter(d => d.dates.length > 0);
-  console.log(newTimeData);
+
+  var mSecondsInAYear = 31536000000;
+  var areaData = newTimeData.map(function(d) {
+    return {
+      "met": d.dates[0].date,
+      "time": relationshipLength(d) / mSecondsInAYear
+    }
+  });
 
   // (4) Create visualization instances
   var matrixVis = new MatrixVis("matrix-vis", matrixData);
@@ -48,5 +55,12 @@ function createVis(error, matrixData, ageData, timeData) {
   var ageVis = new AgeVis("age-vis", ageData);
 
   var timelineVis = new TimelineVis("timeline-vis", newTimeData);
-  // var timeAreaVis = new TimeAreaVis("time-area-vis", ...)
+
+  var MyEventHandler = {};
+  var areaVis = new TimeAreaVis("time-area-vis", areaData, MyEventHandler);
+
+  // (5) Bind event handler
+  $(MyEventHandler).bind("selectionChanged", function(event, rangeStart, rangeEnd){
+    timelineVis.onSelectionChange(rangeStart, rangeEnd);
+  });
 }
