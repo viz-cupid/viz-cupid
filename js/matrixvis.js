@@ -61,6 +61,7 @@ MatrixVis.prototype.initVis = function() {
     .attr("class", "d3-tip")
     .offset([-8, 0])
     .html(d => {
+      var rating_type = d3.select("#matrix-ranking-type").property("value");
       const count = d.num_respondents;
       const ratio = d3.format(".2%")(d.ratio);
       const ratio_string = makeRatioString(rating_type)(ratio);
