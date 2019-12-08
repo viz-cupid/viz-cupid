@@ -282,7 +282,7 @@ function scaleByRatingType(type) {
   } else if (type === "across_this_freq") {
     return ratio => ratio * 2;
   } else if (type === "across_qualities") {
-    return ratio => ratio * 5;
+    return ratio => ratio * 3;
   }
 }
 
@@ -323,6 +323,6 @@ function legendLabelInterpolator(type) {
   } else if (type === "across_this_freq") {
     return d3.interpolateNumber(0, 0.7);
   } else if (type === "across_qualities") {
-    return d3.interpolateNumber(0, 0.3);
+    return d3.interpolateNumber(0, 0.6);
   }
 }
